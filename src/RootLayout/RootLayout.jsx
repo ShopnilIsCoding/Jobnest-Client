@@ -1,10 +1,12 @@
 import Navbar from "../Components/Navbar";
 
 
+
+
 const RootLayout = () => {
     return (
         <div>
-            <Navbar></Navbar>
+           <Navbar></Navbar>
         </div>
     );
 };

@@ -2,9 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
 
 
-
+.font-meri
+{
+  font-family: "Merienda", cursive;
+}
 
 
 
@@ -61,7 +65,7 @@ nav {
 }
 
 .nav-item:not(:last-of-type) {
-	border-right: 0.1rem solid black;
+	/* border-right: 0.1rem solid black; */
 }
 
 .nav-item a {
