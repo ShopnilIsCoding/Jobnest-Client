@@ -7,6 +7,7 @@ import {
 import './index.css'
 import RootLayout from './RootLayout/RootLayout';
 import LoginForm from './Pages/LoginForm';
+import RegisterForm from './Pages/RegisterForm';
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       {
         path:'/login',
         element:<LoginForm></LoginForm>
+      },
+      {
+        path:'/register',
+        element:<RegisterForm></RegisterForm>
       }
     ]
   }
