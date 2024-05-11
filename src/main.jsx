@@ -6,12 +6,19 @@ import {
 } from "react-router-dom";
 import './index.css'
 import RootLayout from './RootLayout/RootLayout';
+import LoginForm from './Pages/LoginForm';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout></RootLayout>,
+    children:[
+      {
+        path:'/login',
+        element:<LoginForm></LoginForm>
+      }
+    ]
   }
 ]);
 
