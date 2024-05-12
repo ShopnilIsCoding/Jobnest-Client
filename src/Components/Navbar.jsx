@@ -8,7 +8,7 @@ const Navbar = () => {
   const {user,logOut}=useContext(AuthContext);
   const navigate=useNavigate();
   const [isChecked, setIsChecked] = useState(() => theme === 'corporate');
-
+  console.log(user)
 
   const handleToggle = e => {
     const selectedTheme = e.target.checked ? 'corporate' : 'business';
@@ -169,9 +169,8 @@ const Navbar = () => {
       </div>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
         <li>
-          <a className="justify-between">
-            Profile
-            <span className="badge">New</span>
+          <a >
+            {user.displayName}
           </a>
         </li>
         <li><a>Settings</a></li>

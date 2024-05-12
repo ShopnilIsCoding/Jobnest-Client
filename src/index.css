@@ -107,7 +107,13 @@ nav {
 
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
 
-
+.google-text-gradient {
+	background-image: linear-gradient(to right, #4285f4, #ea4335, #fbbc05, #34a853);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+  }
+  
 
 .containerc {
 	
@@ -176,7 +182,7 @@ nav {
 .screen__background__shape4 {
 	height: 400px;
 	width: 200px;
-	background: #1a9fdc;	
+	background: #131a35;	
 	top: 420px;
 	right: 50px;	
 	border-radius: 60px;
