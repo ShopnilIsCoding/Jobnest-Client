@@ -110,9 +110,8 @@ nav {
 
 
 .containerc {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+	
+	width: 100%;
 	min-height: 100%;
   overflow: hidden;
 }
@@ -184,8 +183,8 @@ nav {
 }
 
 .login {
-	width: 320px;
-	padding: 30px;
+	width: 100%;
+	padding: 20px;
 	padding-top: 156px;
 }
 
