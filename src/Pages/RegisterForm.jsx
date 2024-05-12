@@ -11,6 +11,11 @@ import { toast } from 'react-toastify';
 function RegisterForm() {
     const {user,createUser,updateUserProfile} =useContext(AuthContext);
     const navigate=useNavigate();
+    if(user)
+        {
+            setTimeout(()=>navigate('/'),3000);
+            return;
+        }
 
     const handleRegister=(e)=>
         {
@@ -30,14 +35,15 @@ function RegisterForm() {
     
               createUser(email,password)
             .then(res=>{console.log(res.user)
+                Swal.fire({
+                    title: "Greetings!",
+                    text: "Successfully Registered!",
+                    icon: "success"
+                  });
               updateUserProfile(name,photo)
               .then(()=>{
-                window.location.reload();
-                Swal.fire({
-                  title: "Greetings!",
-                  text: "Successfully Registered!",
-                  icon: "success"
-                });
+                setTimeout(()=>window.location.reload(),2000)
+                
                  
                  
     

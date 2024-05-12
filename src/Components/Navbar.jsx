@@ -1,11 +1,12 @@
-import {  useEffect, useState } from 'react'
-import {  Link, NavLink } from 'react-router-dom'
+import {  useContext, useEffect, useState } from 'react'
+import {  Link, NavLink, useNavigate } from 'react-router-dom'
 import { FiHome, FiSearch, FiBell } from 'react-icons/fi';
+import { AuthContext } from '../Providers/AuthProvider';
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'business');
-
-
+  const {user,logOut}=useContext(AuthContext);
+  const navigate=useNavigate();
   const [isChecked, setIsChecked] = useState(() => theme === 'corporate');
 
 
@@ -19,6 +20,14 @@ const Navbar = () => {
   useEffect(() => {
     document.querySelector('html').setAttribute('data-theme', theme);
   }, [theme])
+
+  const handleSignOut=()=>
+    {
+      logOut() 
+      .then(()=>{navigate('/')})
+      .catch()
+  
+    }
 
   return (
     <div className='sticky z-50 top-0 bg-gradient-to-b lg:bg-gradient-to-l from-gray-900 via-gray-600 to-base-300 '>
@@ -152,8 +161,25 @@ const Navbar = () => {
             <path d='M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z'></path>
           </svg>
         </label>
-    <Link to={'/login'} className="btn  btn-info">Login</Link>
-    <Link to={'/register'} className="btn btn-outline  btn-accent">Register</Link>
+    {user?<><div className="dropdown dropdown-end">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+        <img alt="Your Profile" src={ user.photoURL? user.photoURL : '/profile.png'} />
+        </div>
+      </div>
+      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <li>
+          <a className="justify-between">
+            Profile
+            <span className="badge">New</span>
+          </a>
+        </li>
+        <li><a>Settings</a></li>
+        <li><a onClick={handleSignOut}>Logout</a></li>
+      </ul>
+    </div></>:
+    <><Link to={'/login'} className="btn  btn-info">Login</Link>
+    <Link to={'/register'} className="btn btn-outline  btn-accent">Register</Link></>}
   </div>
   </div>
   
