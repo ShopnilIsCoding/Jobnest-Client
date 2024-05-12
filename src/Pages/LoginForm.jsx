@@ -69,7 +69,7 @@ function LoginForm() {
             </p>
           </div>
           <div>
-            <div className="containerc opacity-60 lg:opacity-100">
+            <div className="containerc opacity-80 lg:opacity-100">
               <div className="screen w-[300px] lg:w-[360px]">
                 <div className="screen__content">
                   <form className="login" onSubmit={handleLogin}>
@@ -90,12 +90,12 @@ function LoginForm() {
                       />
                     </div>
                     <button className="button login__submit">
-                      <span className="button__text">Log In Now</span>
+                      <span className="button__text ">Log In Now</span>
                       <FaChevronRight className="button__icon" />
                     </button>
                   </form>
                   <div className="social-login">
-                    <h3 className="font-meri">log in via</h3>
+                    <h3 className="font-meri ">log in via</h3>
                     <div className="social-icons">
                       <a
                         onClick={() =>
@@ -110,16 +110,16 @@ function LoginForm() {
                         }
                         className="social-login__icon cursor-pointer flex justify-center items-center "
                       >
-                        <FaGoogle /><span className="google-text-gradient">oogle</span>
+                        <FaGoogle className="text-info" /><span className="google-text-gradient">oogle</span>
                       </a>
                     </div>
                   </div>
                 </div>
                 <div className="screen__background">
-                  <span className="screen__background__shape screen__background__shape4"></span>
+                  <span className="screen__background__shape screen__background__shape4 glass bg-base-300"></span>
                   <span className="screen__background__shape screen__background__shape3"></span>
                   <span className="screen__background__shape screen__background__shape2"></span>
-                  <span className="screen__background__shape screen__background__shape1"></span>
+                  <span className="screen__background__shape screen__background__shape1  "></span>
                 </div>
               </div>
             </div>

@@ -68,7 +68,7 @@ function RegisterForm() {
                         <p className='max-w-md font-serif'>Create an account to access personalized job opportunities. Join <span className='font-meri'>JOBNEST</span> today!</p>
                     </div>
                     <div>
-                        <div className="containerc opacity-60 lg:opacity-100">
+                        <div className="containerc opacity-80 lg:opacity-100">
                             <div className="screen w-[300px] lg:w-[360px] flex justify-center items-center">
                                 <div className="screen__content flex flex-col items-center justify-center">
                                     <form className="register" onSubmit={handleRegister}>
@@ -96,10 +96,10 @@ function RegisterForm() {
                                     
                                 </div>
                                 <div className="screen__background">
-                                    <span className="screen__background__shape screen__background__shape4"></span>
+                                    <span className="screen__background__shape screen__background__shape4 glass bg-primary"></span>
                                     <span className="screen__background__shape screen__background__shape3"></span>		
                                     <span className="screen__background__shape screen__background__shape2"></span>
-                                    <span className="screen__background__shape screen__background__shape1"></span>
+                                    <span className="screen__background__shape screen__background__shape1 glass "></span>
                                 </div>
                             </div>
                         </div>
