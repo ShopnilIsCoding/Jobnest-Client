@@ -2,8 +2,55 @@
 import { FaUser, FaEnvelope, FaLock, FaImage, FaChevronRight} from 'react-icons/fa';
 import Lottie from 'lottie-react';
 import registerAnim from '../Lotties/register.json';
+import { useContext } from 'react';
+import { AuthContext } from '../Providers/AuthProvider';
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 function RegisterForm() {
+    const {user,createUser,updateUserProfile} =useContext(AuthContext);
+    const navigate=useNavigate();
+
+    const handleRegister=(e)=>
+        {
+            e.preventDefault();
+            const form = new FormData(e.currentTarget)
+            const email=form.get('email');
+            const password=form.get('password');
+            const name=form.get('name');
+            const photo=form.get('photo');
+            //const newUser={email,password,name,photo};
+            
+            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+            if (!passwordRegex.test(password)) {
+                toast.warning('Password must be at least 6 characters and contain at least one uppercase and one lowercase letter.');
+                return;
+              }
+    
+              createUser(email,password)
+            .then(res=>{console.log(res.user)
+              updateUserProfile(name,photo)
+              .then(()=>{
+                window.location.reload();
+                Swal.fire({
+                  title: "Greetings!",
+                  text: "Successfully Registered!",
+                  icon: "success"
+                });
+                 
+                 
+    
+              })
+              navigate('/');
+               
+            })
+            .catch(err=>{console.error(err)})
+        }
+
+
+
+
     return (
         <div className=" lg:min-h-[90vh] overflow-hidden" style={{backgroundImage: 'url(/register.png)',objectFit:'cover' ,backgroundPosition:'center',backgroundSize:"cover"}}>
             <div className=""></div>
@@ -18,22 +65,22 @@ function RegisterForm() {
                         <div className="containerc opacity-60 lg:opacity-100">
                             <div className="screen w-[300px] lg:w-[360px] flex justify-center items-center">
                                 <div className="screen__content flex flex-col items-center justify-center">
-                                    <form className="register">
+                                    <form className="register" onSubmit={handleRegister}>
                                         <div className="login__field">
                                             <FaUser className="login__icon" />
-                                            <input type="text" className="login__input" placeholder="Name" />
+                                            <input type="text" name='name' className="login__input" placeholder="Name" required/>
                                         </div>
                                         <div className="login__field">
                                             <FaEnvelope className="login__icon" />
-                                            <input type="email" className="login__input" placeholder="Email" />
+                                            <input type="email" name='email' className="login__input" placeholder="Email" required/>
                                         </div>
                                         <div className="login__field">
                                             <FaLock className="login__icon" />
-                                            <input type="password" className="login__input" placeholder="Password" />
+                                            <input type="password" name='password' className="login__input" placeholder="Password" required/>
                                         </div>
                                         <div className="login__field">
                                             <FaImage className="login__icon" />
-                                            <input type="text" className="login__input" placeholder="Photo URL" />
+                                            <input type="text" name='photo' className="login__input" placeholder="Photo URL" required/>
                                         </div>
                                         <button className="button login__submit">
                                             <span className="button__text">Register Now</span>
