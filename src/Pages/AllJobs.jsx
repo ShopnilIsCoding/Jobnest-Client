@@ -33,12 +33,16 @@ const AllJobs = () => {
   return (
     <div>
       <div>
-        <input
-          type="text"
+        <div className="flex w-full justify-center">
+  <div className="search">
+    <div>
+      <input type="text"
           placeholder="Search by Job Title"
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+          onChange={(e) => setSearchTerm(e.target.value)} />
+    </div>
+  </div>
+</div>
         <div className="overflow-x-scroll">
           <table className="table">
             {/* head */}
