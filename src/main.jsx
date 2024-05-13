@@ -10,6 +10,7 @@ import LoginForm from './Pages/LoginForm';
 import RegisterForm from './Pages/RegisterForm';
 import AuthProvider from './Providers/AuthProvider';
 import { ToastContainer } from 'react-toastify';
+import Home from './Pages/Home';
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
     path: "/",
     element: <RootLayout></RootLayout>,
     children:[
+      {
+        path:'/',
+        element:<Home></Home>
+
+      },
       {
         path:'/login',
         element:<LoginForm></LoginForm>
