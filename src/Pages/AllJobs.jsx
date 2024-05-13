@@ -1,4 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect, useState } from "react";
+import Loading from "../Components/Loading";
 
 
 const AllJobs = () => {
@@ -10,9 +12,19 @@ const AllJobs = () => {
                 return res.json();
             }
         }
+        
     )
-    if(isPending)
-        {return <div>loading</div>}
+    const [showContent, setShowContent] = useState(false);
+
+    useEffect(() => {
+        const timeoutId = setTimeout(() => {
+            setShowContent(true);
+        }, 2000);
+
+        return () => clearTimeout(timeoutId);
+    }, []);
+    if(isPending || !showContent)
+        {return <Loading></Loading>}
     return (
         <div>
             {users.length}
