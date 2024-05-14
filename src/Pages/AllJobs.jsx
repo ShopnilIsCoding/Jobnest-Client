@@ -27,7 +27,7 @@ const AllJobs = () => {
   }
 
   const filteredJobs = jobs.filter(job =>
-    job.title.toLowerCase().includes(searchTerm.toLowerCase())
+    job.jobTitle.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
@@ -48,11 +48,11 @@ const AllJobs = () => {
             {/* head */}
             <thead>
               <tr>
-                <th>Job Title</th>
-                <th>Posting Date</th>
-                <th>Deadline</th>
-                <th>Salary range</th>
-                <th></th>
+                <th className="text-violet-500 font-elec text-lg">Job Title</th>
+                <th className="text-violet-500 font-elec text-lg">Posting Date</th>
+                <th className="text-violet-500 font-elec text-lg">Deadline</th>
+                <th className="text-violet-500 font-elec text-lg">Salary range</th>
+                <th className="text-violet-500 font-elec text-lg"></th>
               </tr>
             </thead>
             <tbody>

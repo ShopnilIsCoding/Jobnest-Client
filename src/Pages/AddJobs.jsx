@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import { useState } from "react"; // Import useState
-import DatePicker from "react-datepicker"; // Import date picker
-import "react-datepicker/dist/react-datepicker.css"; // Date picker styles
+import { useState } from "react"; 
+import DatePicker from "react-datepicker"; 
+import "react-datepicker/dist/react-datepicker.css"; 
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Components/Loading";
@@ -10,7 +10,7 @@ import axios from "axios";
 
 const AddJobs = () => {
   const { user, loading } = useContext(AuthContext);
-  const [deadline, setDeadline] = useState(new Date()); // State for deadline
+  const [deadline, setDeadline] = useState(new Date()); 
   const navigate = useNavigate();
 
   if (loading) {
@@ -25,12 +25,9 @@ const AddJobs = () => {
     const data = Object.fromEntries(formData.entries());
     const email = user.email;
     const userPhoto=user.photoURL;
-    const jobPostingDate = new Date().toISOString();
-    axios.post('http://localhost:3000/all',{...data,jobPostingDate,deadline,postedBy:user.displayName,email,userPhoto:userPhoto?userPhoto:'/profile.png'})
-    // Fetch logic
-    // Similar to your existing fetch logic
-
-    // After successful fetch
+    const deadlineDate = deadline.toISOString().split('T')[0];
+  const jobPostingDate = new Date().toISOString().split('T')[0];
+    axios.post('http://localhost:3000/all',{...data,jobPostingDate,deadlineDate,postedBy:user.displayName,email,userPhoto:userPhoto?userPhoto:'/profile.png'})
     Swal.fire({
       title: "Job Added",
       text: "Your job has been successfully added.",
