@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 const AppliedJobs = () => {
     const { user } = useContext(AuthContext);
+    
     const { isPending, data: jobs } = useQuery({
         queryKey: ["applied", "jobs"],
         queryFn: async () => {
@@ -24,22 +25,22 @@ const AppliedJobs = () => {
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
   };
-  const filteredJobs = selectedCategory === "All" ? jobs : jobs.filter(job => job.category === selectedCategory);
+  const filteredJobs = jobs.filter((job) => {
+    if (selectedCategory === "All") {
+      return true;
+    }
+    return job.jobCategory.toLowerCase() === selectedCategory.toLowerCase();
+  });
 
       if(isPending)
         {
             return <Loading></Loading>
         }
-        if(filteredJobs.length<=0)
+        if(jobs.length<=0)
             {
                 return (<>
                
-            <select value={selectedCategory} onChange={handleCategoryChange} className="mb-4">
-        <option value="All">All</option>
-        <option value="Category1">Category1</option>
-        <option value="Category2">Category2</option>
-        
-      </select>
+               
                 
                 <div role="alert" className="alert flex justify-center flex-col">
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="stroke-error shrink-0 size-16"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
@@ -52,12 +53,19 @@ const AppliedJobs = () => {
             }
     return (
         <div className="">
-            <select value={selectedCategory} onChange={handleCategoryChange} className="mb-4">
-        <option value="All">All</option>
-        <option value="Category1">Category1</option>
-        <option value="Category2">Category2</option>
-        
-      </select>
+            
+      <div className= " my-2">
+  <div className="selects mx-auto">
+    <select value={selectedCategory} onChange={handleCategoryChange} className="border border-accent">
+    <option value="All">All</option>
+        <option className="bg-base-100" value="Remote">Remote</option>
+        <option className="bg-base-100" value="Part-Time">Part-Time</option>
+        <option className="bg-base-100" value="Hybrid">Hybrid</option>
+        <option className="bg-base-100" value="On Site">On Site</option>
+    </select>
+  </div>
+  
+</div> 
             {
                 <div className="overflow-x-scroll">
                 <table className="table">
@@ -72,7 +80,7 @@ const AppliedJobs = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {jobs.map((job) => (
+                    {filteredJobs.map((job) => (
                       <AllSingleJobs key={job._id} job={job}></AllSingleJobs>
                     ))}
                   </tbody>
