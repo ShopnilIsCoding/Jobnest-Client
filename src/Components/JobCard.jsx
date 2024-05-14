@@ -1,18 +1,40 @@
+import { Link } from "react-router-dom";
+import { IoCalendarOutline, IoPersonOutline, IoCashOutline, IoEyeOutline } from 'react-icons/io5';
 
+const JobCard = ({ job }) => {
+    const truncateDescription = (description) => {
+        const words = description.split(' ');
+        if (words.length > 10) {
+            return words.slice(0, 10).join(' ') + '...';
+        } else {
+            return description;
+        }
+    };
 
-const JobCard = ({jobs}) => {
     return (
-        <div>
-           
-
-  <div className="card">
-    <h2 className="card-title bg-violet-500">Seal</h2>
-    <img  src="https://images.unsplash.com/photo-1591485423007-765bde4139ef?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80" alt=""/>
-    <p className="card-desc bg-base-100">Pinnipeds, commonly known as seals,[a] are a widely distributed and diverse clade of carnivorous, fin-footed, semiaquatic marine mammals. They comprise the extant families Odobenidae (whose only living member is the walrus), Otariidae (the eared seals: sea lions and fur seals), and Phocidae (the earless seals, or true seals).</p>
-  </div>
-  
-
-        </div>
+        <Link to={`/details/${job._id}`} className="card">
+            <h2 className="card-title bg-accent font-elec">{job.jobTitle}</h2>
+            <div className="">
+                <img src={job.jobPicture} className="h-[200px] w-[250px]" alt="" />
+            </div>
+            <div className="card-desc bg-base-100 text-ellipsis">{truncateDescription(job.jobDescription)}
+            <p className="flex items-center flex-wrap gap-1 text-green-600">
+                <IoCalendarOutline />{job.jobPostingDate}
+            </p>
+            <p className="flex items-center flex-wrap gap-1 text-red-600">
+                <IoCalendarOutline />{job.deadlineDate}
+            </p>
+            <p className="flex items-center flex-wrap gap-1 text-lime-400">
+                <IoCashOutline />{job.salaryRange}
+            </p>
+            <p className="flex items-center flex-wrap gap-1 text-info">
+                <IoPersonOutline />  {job.jobApplicantsNumber}
+            </p>
+            <Link to={`/details/${job._id}`} className="btn btn-primary flex justify-center">
+                <IoEyeOutline /> View Details
+            </Link></div>
+            
+        </Link>
     );
 };
 
