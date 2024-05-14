@@ -3,11 +3,16 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&display=swap');
 
 
 .font-meri
 {
   font-family: "Merienda", cursive;
+}
+.font-elec
+{
+  font-family: "Electrolize";
 }
 
 

@@ -2,6 +2,7 @@ import {  useContext, useEffect, useState } from 'react'
 import {  Link, NavLink, useNavigate } from 'react-router-dom'
 import { FiHome, FiSearch, FiBell } from 'react-icons/fi';
 import { AuthContext } from '../Providers/AuthProvider';
+import { FaAd, FaPlus } from 'react-icons/fa';
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'business');
@@ -108,6 +109,14 @@ const Navbar = () => {
         <a >All Jobs</a>
       </NavLink>
       </span>
+      {user && <span className='border-r border-gray-700'>
+      <NavLink to={'/add'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
+        <span className="icon">
+        <FaPlus />
+        </span>
+        <a >Add Jobs</a>
+      </NavLink>
+      </span>}
       <span className="nav-item">
         <span className="icon">
           <span className="subicon">13</span>
