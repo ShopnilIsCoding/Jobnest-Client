@@ -18,6 +18,10 @@ import AddJobs from "./Pages/AddJobs";
 import PrivateRoutes from "./Routes/PrivateRoutes";
 import JobDetails from "./Pages/JobDetails";
 import AppliedJobs from "./Pages/AppliedJobs";
+import BlogsPage from "./Pages/BlogsPage";
+import AccessTokensBlog from "./Components/AccessTokensBlog";
+import ExpressJSBlog from "./Components/ExpressJSBlog";
+import NestJSBlog from "./Components/NestJSBlog";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +55,22 @@ const router = createBrowserRouter([
       {
         path:'/appliedjobs',
         element:<PrivateRoutes><AppliedJobs></AppliedJobs></PrivateRoutes>
+      },
+      {
+        path:'/blogs',
+        element:<BlogsPage></BlogsPage>
+      },
+      {
+        path:'/blogs/access-tokens',
+        element:<AccessTokensBlog></AccessTokensBlog>
+      },
+      {
+        path:'/blogs/express-js',
+        element:<ExpressJSBlog></ExpressJSBlog>
+      },
+      {
+        path:'/blogs/nest-js',
+        element:<NestJSBlog></NestJSBlog>
       }
     ],
   },

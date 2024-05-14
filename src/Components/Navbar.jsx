@@ -5,6 +5,7 @@ import { AuthContext } from '../Providers/AuthProvider';
 import { FaAd, FaBell, FaPlus } from 'react-icons/fa';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
+import { ImBlog } from 'react-icons/im';
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'business');
@@ -135,13 +136,21 @@ const Navbar = () => {
         <a >Add Jobs</a>
       </NavLink>
       </span>}
-      {user && <span className=' border-gray-700'>
+      {user && <span className='border-r border-gray-700'>
       <NavLink to={'/appliedjobs'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
         <span className="icon">
         <span className="subicon">{jobs?.length<=0? '?':jobs.length}</span>
         <FaBell />
         </span>
         <a >Applied Jobs</a>
+      </NavLink>
+      </span>}
+      {user && <span className=' border-gray-700'>
+      <NavLink to={'/blogs'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
+        <span className="icon">
+        <ImBlog />
+        </span>
+        <a >Blogs</a>
       </NavLink>
       </span>}
       
