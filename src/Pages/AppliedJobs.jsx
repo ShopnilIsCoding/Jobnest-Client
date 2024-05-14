@@ -81,7 +81,7 @@ const AppliedJobs = () => {
                   </thead>
                   <tbody>
                     {filteredJobs.map((job) => (
-                      <AllSingleJobs key={job._id} job={job}></AllSingleJobs>
+                      <AllSingleJobs key={job._id} job={job} update={false} del={false}></AllSingleJobs>
                     ))}
                   </tbody>
                 </table>

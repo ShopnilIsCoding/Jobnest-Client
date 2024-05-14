@@ -22,6 +22,7 @@ import BlogsPage from "./Pages/BlogsPage";
 import AccessTokensBlog from "./Components/AccessTokensBlog";
 import ExpressJSBlog from "./Components/ExpressJSBlog";
 import NestJSBlog from "./Components/NestJSBlog";
+import MyJobs from "./Pages/MyJobs";
 
 const router = createBrowserRouter([
   {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path:'/blogs/nest-js',
         element:<NestJSBlog></NestJSBlog>
+      },
+      {
+        path:'/myjobs',
+        element:<PrivateRoutes><MyJobs></MyJobs></PrivateRoutes>
       }
     ],
   },

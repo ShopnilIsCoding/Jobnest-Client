@@ -6,6 +6,7 @@ import { FaAd, FaBell, FaPlus } from 'react-icons/fa';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import { ImBlog } from 'react-icons/im';
+import { LuListTodo } from 'react-icons/lu';
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'business');
@@ -137,6 +138,14 @@ const Navbar = () => {
       </NavLink>
       </span>}
       {user && <span className='border-r border-gray-700'>
+      <NavLink to={'/myjobs'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
+        <span className="icon">
+        <LuListTodo />
+        </span>
+        <a >My Jobs</a>
+      </NavLink>
+      </span>}
+      {user && <span className='border-r border-gray-700'>
       <NavLink to={'/appliedjobs'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
         <span className="icon">
         <span className="subicon">{jobs?.length<=0? '?':jobs.length}</span>
@@ -145,14 +154,14 @@ const Navbar = () => {
         <a >Applied Jobs</a>
       </NavLink>
       </span>}
-      {user && <span className=' border-gray-700'>
+      <span className=' border-gray-700'>
       <NavLink to={'/blogs'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
         <span className="icon">
         <ImBlog />
         </span>
         <a >Blogs</a>
       </NavLink>
-      </span>}
+      </span>
       
 
     </nav>

@@ -35,7 +35,7 @@ const AddJobs = () => {
       confirmButtonColor: "#3085d6",
       confirmButtonText: "OK"
     }).then(() => {
-      navigate(`/jobs`);
+      navigate(`/myjobs`);
     });
   };
 
