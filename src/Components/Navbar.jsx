@@ -2,10 +2,13 @@ import {  useContext, useEffect, useState } from 'react'
 import {  Link, NavLink, useNavigate } from 'react-router-dom'
 import { FiHome, FiSearch, FiBell } from 'react-icons/fi';
 import { AuthContext } from '../Providers/AuthProvider';
-import { FaAd, FaPlus } from 'react-icons/fa';
+import { FaAd, FaBell, FaPlus } from 'react-icons/fa';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'business');
+  const [count,setCount]=useState('?')
   const {user,logOut}=useContext(AuthContext);
   const navigate=useNavigate();
   const [isChecked, setIsChecked] = useState(() => theme === 'corporate');
@@ -21,6 +24,21 @@ const Navbar = () => {
   useEffect(() => {
     document.querySelector('html').setAttribute('data-theme', theme);
   }, [theme])
+
+
+  const {  data: jobs } = useQuery({
+    queryKey: ["applied", "jobs"],
+    queryFn: async () => {
+      const res = await axios.get(`http://localhost:3000/applyByAll?email=${user?.email}`,{
+        
+    });
+      return res.data;
+    },
+  });
+  useEffect(()=>{
+    setCount(jobs?.length);
+  },[jobs?.length])
+
 
   const handleSignOut=()=>
     {
@@ -117,13 +135,16 @@ const Navbar = () => {
         <a >Add Jobs</a>
       </NavLink>
       </span>}
-      <span className="nav-item">
+      {user && <span className=' border-gray-700'>
+      <NavLink to={'/appliedjobs'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
         <span className="icon">
-          <span className="subicon">13</span>
-          <FiBell />
+        <span className="subicon">{jobs?.length<=0? '?':jobs.length}</span>
+        <FaBell />
         </span>
-        <a href="#">Applied Jobs</a>
-      </span>
+        <a >Applied Jobs</a>
+      </NavLink>
+      </span>}
+      
 
     </nav>
       

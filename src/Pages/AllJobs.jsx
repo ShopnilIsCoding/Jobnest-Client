@@ -57,7 +57,7 @@ const AllJobs = () => {
             </thead>
             <tbody>
               {filteredJobs.map((job) => (
-                <AllSingleJobs key={job._id} job={job}></AllSingleJobs>
+                <AllSingleJobs key={job._id} job={job} detail={true}></AllSingleJobs>
               ))}
             </tbody>
           </table>

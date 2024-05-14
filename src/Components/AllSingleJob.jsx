@@ -1,6 +1,6 @@
 import { BsFillArrowUpRightCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
-const AllSingleJobs = ({job}) => {
+const AllSingleJobs = ({job,detail}) => {
     
     return (
         
@@ -27,9 +27,9 @@ const AllSingleJobs = ({job}) => {
         </td>
         <td className="font-serif text-lg">{job.deadlineDate}</td>
         <td className="font-serif text-nowrap">{job.salaryRange}</td>
-        <th>
+        {detail ? <th>
           <Link to={`/details/${job._id}`}><button className="btn py-4 btn-accent btn-outline btn-xs text-lg flex justify-center items-center flex-nowrap"><BsFillArrowUpRightCircleFill></BsFillArrowUpRightCircleFill><p>Details</p></button></Link>
-        </th>
+        </th>:<></>}
       </tr></>
     );
 };
