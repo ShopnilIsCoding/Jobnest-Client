@@ -27,11 +27,13 @@ import AccessTokensBlog from "./Components/AccessTokensBlog";
 import ExpressJSBlog from "./Components/ExpressJSBlog";
 import NestJSBlog from "./Components/NestJSBlog";
 import MyJobs from "./Pages/MyJobs";
+import NotFoundPage from "./Pages/NotFoundPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout></RootLayout>,
+    errorElement:<NotFoundPage></NotFoundPage>,
     children: [
       {
         path: "/",
