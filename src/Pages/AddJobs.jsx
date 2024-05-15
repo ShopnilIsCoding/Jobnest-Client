@@ -27,7 +27,7 @@ const AddJobs = () => {
     const userPhoto=user.photoURL;
     const deadlineDate = deadline.toISOString().split('T')[0];
   const jobPostingDate = new Date().toISOString().split('T')[0];
-    axios.post('http://localhost:3000/all',{...data,jobPostingDate,deadlineDate,postedBy:user.displayName,email,userPhoto:userPhoto?userPhoto:'/profile.png'})
+    axios.post('https://jobnestbd.vercel.app/all',{...data,jobPostingDate,deadlineDate,postedBy:user.displayName,email,userPhoto:userPhoto?userPhoto:'/profile.png'})
     Swal.fire({
       title: "Job Added",
       text: "Your job has been successfully added.",

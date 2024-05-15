@@ -11,7 +11,7 @@ const MyJobs = () => {
     const {isFetched, data: jobs } = useQuery({
         queryKey: ["my", "jobs"],
         queryFn: async () => {
-          const res = await axios.get(`http://localhost:3000/posted?email=${user.email}`,{
+          const res = await axios.get(`https://jobnestbd.vercel.app/posted?email=${user.email}`,{
             withCredentials:true
             
         });

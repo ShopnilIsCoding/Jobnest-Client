@@ -18,7 +18,7 @@ const JobDetails = () => {
   const {isPending,  data: job } = useQuery({
       queryKey: ["details", "job"],
       queryFn: async () => {
-          const res = await fetch(`http://localhost:3000/details/${_id}`);
+          const res = await fetch(`https://jobnestbd.vercel.app/details/${_id}`);
           return res.json();
       },
   });
@@ -45,8 +45,8 @@ const JobDetails = () => {
   const handleSubmit = (e) => {
       
       const resume = e.target.resume.value;
-      axios.post(`http://localhost:3000/details/${_id}`)
-      axios.post(`http://localhost:3000/applyBy`, {
+      axios.post(`https://jobnestbd.vercel.app/details/${_id}`)
+      axios.post(`https://jobnestbd.vercel.app/applyBy`, {
     ...((({ _id, ...rest }) => ({ ID: _id, ...rest }))(job)), 
     Resume: resume,
     appliedBy: user.displayName,
@@ -71,7 +71,7 @@ const JobDetails = () => {
   const { data: applicationData ,isLoading} = useQuery({
       queryKey: ['checkApplication', _id, user.email],
       queryFn: async () => {
-          const response = await axios.get(`http://localhost:3000/checkApplication`, {
+          const response = await axios.get(`https://jobnestbd.vercel.app/checkApplication`, {
               params: {
                   jobId: _id,
                   applicantEmail: user.email

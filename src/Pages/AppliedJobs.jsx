@@ -97,7 +97,7 @@ const AppliedJobs = () => {
   const { isPending, data: jobs } = useQuery({
     queryKey: ["applied", "jobs"],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:3000/applyByAll?email=${user.email}`,{
+      const res = await axios.get(`https://jobnestbd.vercel.app/applyByAll?email=${user.email}`,{
         withCredentials:true
       });
       return res.data;

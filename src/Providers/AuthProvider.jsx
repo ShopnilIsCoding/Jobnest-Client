@@ -52,7 +52,7 @@ const AuthProvider = ({children}) => {
             if(currentUser)
                 {
                     
-                    axios.post('http://localhost:3000/jwt',loggedUser,{withCredentials:true})
+                    axios.post('https://jobnestbd.vercel.app/jwt',loggedUser,{withCredentials:true})
                     .then(res=>
                         {
                             console.log('token res',res.data);
@@ -61,7 +61,7 @@ const AuthProvider = ({children}) => {
                 }
                 else{
 
-                    axios.post('http://localhost:3000/logout',loggedUser,{withCredentials:true})
+                    axios.post('https://jobnestbd.vercel.app/logout',loggedUser,{withCredentials:true})
                                        .then(res=>{
                                         console.log('logout res',res.data)
                                        })

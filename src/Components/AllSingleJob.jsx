@@ -31,7 +31,7 @@ const AllSingleJobs = ({ job, detail, del, itemjobs, setItemjobs,update }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/delete/${job._id}`)
+          .delete(`https://jobnestbd.vercel.app/delete/${job._id}`)
           .then((response) => {
             // Filter out the deleted job from itemjobs
             const remainingItemjobs = itemjobs.filter(
@@ -54,7 +54,7 @@ const AllSingleJobs = ({ job, detail, del, itemjobs, setItemjobs,update }) => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
-    axios.patch(`http://localhost:3000/update/${job._id}`, data, {
+    axios.patch(`https://jobnestbd.vercel.app/update/${job._id}`, data, {
         headers: {
             'Content-Type': 'application/json'
         }

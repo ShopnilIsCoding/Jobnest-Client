@@ -7,7 +7,7 @@ const AllJobs = () => {
   const { isPending, data: jobs } = useQuery({
     queryKey: ["all", "jobs"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:3000/all");
+      const res = await fetch("https://jobnestbd.vercel.app/all");
       return res.json();
     },
   });
