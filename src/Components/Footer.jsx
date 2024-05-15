@@ -2,31 +2,31 @@
 
 const Footer = () => {
     return (
-        <footer className="animate__animated animate__fadeInUp footer p-10 bg-base-200 text-base-content grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center">
+        <footer className=" footer p-10 bg-gray-900 text-base-content grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center items-center">
             <aside>
-                <img src={'/logo.png'} className="size-20" alt="Company Logo" />
-                <p>We Help You Find Your Dream Job <br /><span className=' font-serif font-black'>&copy; {new Date().getFullYear()} <span className='bg-gradient-to-r from-orange-700 via-blue-500 to-green-400 text-transparent bg-clip-text bg-300% animate-gradient'>YourJobSiteX</span>. All Rights Reserved.</span></p>
+                <img src={'/logo.jpg'} className="size-20 rounded-full border-2 border-violet-300" alt="Company Logo" />
+                <p className="text-white">We Help You Find Your Dream Job <br /><span className=' font-serif font-black'>&copy; {new Date().getFullYear()} <span className='font-meri text-xl'>JOBNEST</span>. All Rights Reserved.</span></p>
             </aside>
-            <nav>
-                <h6 className="footer-title">Job Categories</h6>
-                <a className="link link-hover">All Jobs</a>
-                <a className="link link-hover">Hybrid Jobs</a>
-                <a className="link link-hover">Onsite Jobs</a>
-                <a className="link link-hover">Remote Jobs</a>
-                <a className="link link-hover">Part-time Jobs</a>
-            </nav>
-            <nav>
-                <h6 className="footer-title">Resources</h6>
-                <a className="link link-hover">Resume Tips</a>
-                <a className="link link-hover">Interview Preparation</a>
-                <a className="link link-hover">Career Advice</a>
-            </nav>
-            <nav>
-                <h6 className="footer-title">Legal</h6>
-                <a className="link link-hover">Terms of Service</a>
-                <a className="link link-hover">Privacy Policy</a>
-                <a className="link link-hover">Cookie Policy</a>
-            </nav>
+            <div  className="p-5">
+                <h6 className="footer-title text-gray-400">Job Categories</h6>
+                <a className="link link-hover text-white">All Jobs</a>
+                <a className="link link-hover text-white">Hybrid Jobs</a>
+                <a className="link link-hover text-white">Onsite Jobs</a>
+                <a className="link link-hover text-white">Remote Jobs</a>
+                <a className="link link-hover text-white">Part-time Jobs</a>
+            </div >
+            <div className="p-5">
+                <h6 className="footer-title text-gray-400">Resources</h6>
+                <a className="link link-hover text-white">Resume Tips</a>
+                <a className="link link-hover text-white">Interview Preparation</a>
+                <a className="link link-hover text-white">Career Advice</a>
+            </div>
+            <div className="p-5">
+                <h6 className="footer-title text-gray-400">Legal</h6>
+                <a className="link link-hover text-white">Terms of Service</a>
+                <a className="link link-hover text-white">Privacy Policy</a>
+                <a className="link link-hover text-white">Cookie Policy</a>
+            </div>
         </footer>
     );
 };

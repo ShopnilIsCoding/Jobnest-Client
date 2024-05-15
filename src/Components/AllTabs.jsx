@@ -17,7 +17,7 @@ const AllTabs = () => {
         return <Loading />;
     }
 
-    // Function to filter jobs based on job category
+   
     const filterJobsByCategory = (category) => {
         return jobs.filter(job => job.jobCategory === category);
     };
@@ -39,7 +39,7 @@ const AllTabs = () => {
                     <Tab selectedClassName='bg-accent'>Part-time Jobs</Tab>
                 </TabList>
                 <TabPanel >
-                    {/* Display all jobs */}
+                    
                     <div className=' flex flex-wrap justify-center'>
                     {jobs.map(job => (
                          <JobCard key={job._id} job={job}></JobCard>
@@ -47,7 +47,7 @@ const AllTabs = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    {/* Display onsite jobs */}
+                    
                     <div className=' flex flex-wrap justify-center items-center'>
                     {filterJobsByCategory('On Site').map(job => (
                         <JobCard key={job._id} job={job}></JobCard>
@@ -55,7 +55,7 @@ const AllTabs = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    {/* Display remote jobs */}
+                    
                     <div className=' flex flex-wrap justify-center'>
                     {filterJobsByCategory('Remote').map(job => (
                         <JobCard key={job._id} job={job}></JobCard>
@@ -63,7 +63,7 @@ const AllTabs = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    {/* Display hybrid jobs */}
+                    
                     <div className=' flex flex-wrap justify-center'>
                     {filterJobsByCategory('Hybrid').map(job => (
                         <JobCard key={job._id} job={job}></JobCard>
@@ -71,7 +71,7 @@ const AllTabs = () => {
                     </div>
                 </TabPanel>
                 <TabPanel>
-                    {/* Display part-time jobs */}
+                   
                     <div className=' flex flex-wrap justify-center'>
                     {filterJobsByCategory('Part-Time').map(job => (
                         <JobCard key={job._id} job={job}></JobCard>
