@@ -4,7 +4,7 @@ import Lottie from 'lottie-react';
 import registerAnim from '../Lotties/register.json';
 import { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProvider';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 
@@ -66,6 +66,7 @@ function RegisterForm() {
                         <h1 className='text-5xl font-serif'>Register Now!</h1>
                         <Lottie className='size-80 mx-auto' animationData={registerAnim} loop={true} />
                         <p className='max-w-md font-serif'>Create an account to access personalized job opportunities. Join <span className='font-meri'>JOBNEST</span> today!</p>
+                        <p className="font-elec">Already have an Account!<Link to={'/login'} className="btn-link text-blue-400 ml-1 ">Login Now!</Link></p>
                     </div>
                     <div>
                         <div className="containerc opacity-80 lg:opacity-100">

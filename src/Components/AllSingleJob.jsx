@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import { BsFillArrowUpRightCircleFill } from "react-icons/bs";
 import { RiDeleteBin6Fill } from "react-icons/ri";
@@ -6,8 +6,19 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { MdOutlineEdit } from "react-icons/md";
 import { FaBriefcase, FaCalendarAlt, FaClipboard, FaDollarSign, FaImage } from "react-icons/fa";
+import { AuthContext } from "../Providers/AuthProvider";
+import { toast } from "react-toastify";
 
 const AllSingleJobs = ({ job, detail, del, itemjobs, setItemjobs,update }) => {
+  const {user}=useContext(AuthContext);
+  const validate=()=>
+    {
+            if(!user)
+                {
+                    toast.error("You have to log in first to view details")
+                }
+    }
+    
   const handleDelete = (_id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -89,7 +100,7 @@ const AllSingleJobs = ({ job, detail, del, itemjobs, setItemjobs,update }) => {
         <td className="font-serif text-nowrap">{job.salaryRange}</td>
         {detail ? (
           <th>
-            <Link to={`/details/${job._id}`}>
+            <Link onClick={validate} to={`/details/${job._id}`}>
               <button className="btn py-4 btn-accent btn-outline btn-xs text-lg flex justify-center items-center flex-nowrap">
                 <BsFillArrowUpRightCircleFill />
                 <p>Details</p>

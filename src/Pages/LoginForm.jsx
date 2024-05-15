@@ -9,7 +9,7 @@ import Lottie from "lottie-react";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 function LoginForm() {
   const {user, signIn, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -67,6 +67,7 @@ function LoginForm() {
               Whether you're seeking on-site, remote, hybrid, or part-time
               roles, <span className="font-meri">JOBNEST</span> has you covered.
             </p>
+            <p className="font-elec">Don't have an Account?<Link to={'/register'} className="btn-link text-blue-400 ml-1 ">Register Now!</Link></p>
           </div>
           <div>
             <div className="containerc opacity-80 lg:opacity-100">

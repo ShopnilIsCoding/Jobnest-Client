@@ -8,6 +8,7 @@ import RegisterForm from "./Pages/RegisterForm";
 import AuthProvider from "./Providers/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import Home from "./Pages/Home";
+import 'react-toastify/dist/ReactToastify.css';
 import {
   
   QueryClientProvider,
