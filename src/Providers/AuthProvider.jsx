@@ -55,7 +55,7 @@ const AuthProvider = ({children}) => {
                     axios.post('https://jobnestbd.vercel.app/jwt',loggedUser,{withCredentials:true})
                     .then(res=>
                         {
-                            console.log('token res',res.data);
+                            
                         }
                     )
                 }
@@ -63,7 +63,7 @@ const AuthProvider = ({children}) => {
 
                     axios.post('https://jobnestbd.vercel.app/logout',loggedUser,{withCredentials:true})
                                        .then(res=>{
-                                        console.log('logout res',res.data)
+                                        
                                        })
                 }
         });

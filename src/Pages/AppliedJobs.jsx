@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
 
 const AppliedJobs = () => {
   const { user } = useContext(AuthContext);
-  const { isPending, data: jobs } = useQuery({
+  const { isFetched, data: jobs } = useQuery({
     queryKey: ["applied", "jobs"],
     queryFn: async () => {
       const res = await axios.get(`https://jobnestbd.vercel.app/applyByAll?email=${user.email}`,{
@@ -107,17 +107,17 @@ const AppliedJobs = () => {
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
   };
-  const filteredJobs = jobs.filter((job) => {
+  const filteredJobs = jobs?.filter((job) => {
     if (selectedCategory === "All") {
       return true;
     }
     return job.jobCategory.toLowerCase() === selectedCategory.toLowerCase();
   });
 
-  if (isPending) {
+  if (!isFetched) {
     return <Loading />;
   }
-  if (jobs.length <= 0) {
+  if (isFetched && jobs.length <= 0) {
     return (
       <>
         <div role="alert" className="alert flex justify-center flex-col">

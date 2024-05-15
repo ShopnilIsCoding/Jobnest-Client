@@ -34,7 +34,7 @@ function RegisterForm() {
               }
     
               createUser(email,password)
-            .then(res=>{console.log(res.user)
+            .then(res=>{
                 Swal.fire({
                     title: "Greetings!",
                     text: "Successfully Registered!",

@@ -33,13 +33,12 @@ const AllSingleJobs = ({ job, detail, del, itemjobs, setItemjobs,update }) => {
         axios
           .delete(`https://jobnestbd.vercel.app/delete/${job._id}`)
           .then((response) => {
-            // Filter out the deleted job from itemjobs
+          
             const remainingItemjobs = itemjobs.filter(
               (filterjobs) => filterjobs._id != _id
               
             );
-            console.log(remainingItemjobs);
-            // Update the itemjobs state
+           
             setItemjobs(remainingItemjobs);
             Swal.fire({
               title: "Deleted!",

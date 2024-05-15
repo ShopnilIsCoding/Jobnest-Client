@@ -4,6 +4,7 @@ import AllSingleJobs from "../Components/AllSingleJob";
 import axios from "axios";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const MyJobs = () => {
     const { user } = useContext(AuthContext);
@@ -22,11 +23,15 @@ const MyJobs = () => {
         setItemjobs(jobs);
       },[isFetched,jobs])
       
-      console.log(itemjobs)
+      
       if(!isFetched )
         {
             return <Loading></Loading>
         }
+        if(jobs.length<=0)
+          {
+            return <h1 className="text-2xl my-2 text-info  w-fit mx-auto flex flex-col justify-center items-center"> You haven't Posted a Job Yet <Link className="btn btn-info ml-1" to={'/add'} >Post Now!</Link></h1>
+          }
     return (
         
     

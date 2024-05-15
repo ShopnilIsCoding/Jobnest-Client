@@ -10,11 +10,11 @@ import { LuListTodo } from 'react-icons/lu';
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'business');
-  const [count,setCount]=useState('?')
+  const [count,setCount]=useState("!")
   const {user,logOut}=useContext(AuthContext);
   const navigate=useNavigate();
   const [isChecked, setIsChecked] = useState(() => theme === 'corporate');
-  console.log(user)
+  
 
   const handleToggle = e => {
     const selectedTheme = e.target.checked ? 'corporate' : 'business';
@@ -28,18 +28,30 @@ const Navbar = () => {
   }, [theme])
 
 
-  const {  data: jobs } = useQuery({
+  const { data: jobs } = useQuery({
     queryKey: ["applied", "jobs"],
     queryFn: async () => {
-      const res = await axios.get(`https://jobnestbd.vercel.app/applyByAll?email=${user?.email}`,{
-        withCredentials:true
-    });
-      return res.data;
+      
+      if (user && user.email) {
+        const res = await axios.get(`https://jobnestbd.vercel.app/applyByAll?email=${user.email}`, {
+          withCredentials: true
+        });
+        return res.data;
+      } else {
+        
+        return [];
+      }
     },
   });
-  useEffect(()=>{
-    setCount(jobs?.length);
-  },[jobs?.length])
+  useEffect(() => {
+    
+    if (jobs) {
+      setCount(jobs.length);
+    } else {
+      
+      setCount('!');
+    }
+  }, [jobs]);
 
 
   const handleSignOut=()=>
@@ -59,12 +71,55 @@ const Navbar = () => {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </div>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-      <li><NavLink to={'/'} className={({ isActive}) =>
-    isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
-  }>Home</NavLink></li>
-      <li><NavLink to={'/all'} className={({ isActive}) =>
-    isActive ? "border-b-2 border-b-rose-300  p-2 text-rose-300 font-semibold text-center delay-75 transition-all" : " p-2 text-violet-400 font-semibold"
-  }>All Items</NavLink></li>
+      <li className=' border-gray-700'>
+      <NavLink to={'/'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
+        <li className="icon">
+          <FiHome />
+        </li>
+        <a >Home</a>
+      </NavLink>
+      </li>
+      <li className=' border-gray-700'>
+      <NavLink to={'/all'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
+        <li className="icon">
+        <FiSearch />
+        </li>
+        <a >All Jobs</a>
+      </NavLink>
+      </li>
+      {user && <li className=' border-gray-700'>
+      <NavLink to={'/add'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
+        <li className="icon">
+        <FaPlus />
+        </li>
+        <a >Add Jobs</a>
+      </NavLink>
+      </li>}
+      {user && <li className=' border-gray-700'>
+      <NavLink to={'/myjobs'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
+        <li className="icon">
+        <LuListTodo />
+        </li>
+        <a >My Jobs</a>
+      </NavLink>
+      </li>}
+      {user && <li className=' border-gray-700'>
+      <NavLink to={'/appliedjobs'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
+        <li className="icon">
+        <li className="absolute bg-red-500 rounded-full top-0 text-white">{jobs?.length<=0? '!':jobs?.length}</li>
+        <FaBell />
+        </li>
+        <a >Applied Jobs</a>
+      </NavLink>
+      </li>}
+      <li className=' border-gray-700'>
+      <NavLink to={'/blogs'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
+        <li className="icon">
+        <ImBlog />
+        </li>
+        <a >Blogs</a>
+      </NavLink>
+      </li>
       
 
 <label className='cursor-pointer grid place-items-center lg:hidden '>
@@ -148,7 +203,7 @@ const Navbar = () => {
       {user && <span className='border-r border-gray-700'>
       <NavLink to={'/appliedjobs'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
         <span className="icon">
-        <span className="subicon">{jobs?.length<=0? '?':jobs?.length}</span>
+        <span className="subicon">{jobs?.length<=0? '!':jobs?.length}</span>
         <FaBell />
         </span>
         <a >Applied Jobs</a>
@@ -221,7 +276,7 @@ const Navbar = () => {
             {user.displayName}
           </a>
         </li>
-        <li><a>Settings</a></li>
+        
         <li><a onClick={handleSignOut}>Logout</a></li>
       </ul>
     </div></>:

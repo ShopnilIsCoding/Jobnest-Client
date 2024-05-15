@@ -15,7 +15,7 @@ const WhyUS = () => {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-16 md:grid-cols-3 lg:gap-8">
-          <div className="why-us-item flex flex-col items-center bg-base-100  p-6 rounded-lg shadow-xl border border-info" data-aos="zoom-out-down">
+          <div className="why-us-item flex flex-col items-center bg-base-100  p-6 rounded-lg shadow-xl border border-info" data-aos="zoom-in">
             <div className="icon bg-blue-500  rounded-full p-3 mb-4">
               <RiCustomerService2Line className="text-xl" />
             </div>
@@ -26,7 +26,7 @@ const WhyUS = () => {
               We provide personalized service to every job seeker, ensuring your needs are met every step of the way.
             </p>
           </div>
-          <div className="why-us-item flex flex-col items-center bg-base-100 shadow-lg p-6 rounded-lg hadow-xl border border-info" data-aos="zoom-out-down" data-aos-delay="200">
+          <div className="why-us-item flex flex-col items-center bg-base-100 shadow-lg p-6 rounded-lg hadow-xl border border-info" data-aos="zoom-in" data-aos-delay="200">
             <div className="icon bg-green-500  rounded-full p-3 mb-4">
               <GrLike />
             </div>
@@ -37,7 +37,7 @@ const WhyUS = () => {
               Our job listings are of the highest quality, carefully curated to match your skills and preferences.
             </p>
           </div>
-          <div className="why-us-item flex flex-col items-center bg-base-100 shadow-lg p-6 rounded-lg hadow-xl border border-info" data-aos="zoom-out-down" data-aos-delay="400">
+          <div className="why-us-item flex flex-col items-center bg-base-100 shadow-lg p-6 rounded-lg  border border-info" data-aos="zoom-in" data-aos-delay="400">
             <div className="icon bg-purple-500  rounded-full p-3 mb-4">
               <GrUserExpert />
             </div>
@@ -52,7 +52,7 @@ const WhyUS = () => {
       </div>
       <div className="stats-container mx-auto max-w-7xl px-4 lg:px-8 mt-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="stat bg-base-100 shadow-lg p-6 rounded-lg hadow-xl border border-info" data-aos="fade-up">
+          <div className="stat bg-base-100  p-6 rounded-lg shadow-xl border border-info" data-aos="zoom-in">
             <div className="flex items-center mb-4">
               <div className="icon bg-blue-500  rounded-full p-3 mr-3">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-8 h-8 stroke-current">
@@ -68,7 +68,7 @@ const WhyUS = () => {
               </div>
             </div>
           </div>
-          <div className="stat bg-base-100 shadow-lg p-6 rounded-lg shadow-xl border border-info" data-aos="fade-up" data-aos-delay="200">
+          <div className="stat bg-base-100  p-6 rounded-lg shadow-xl border border-info" data-aos="zoom-in" data-aos-delay="200">
             <div className="flex items-center mb-4">
               <div className="icon bg-green-500  rounded-full p-3 mr-3">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-8 h-8 stroke-current">
@@ -84,7 +84,7 @@ const WhyUS = () => {
               </div>
             </div>
           </div>
-          <div className="stat bg-base-100 shadow-lg p-6 rounded-lg border border-info" data-aos="fade-up" data-aos-delay="400">
+          <div className="stat bg-base-100 shadow-lg p-6 rounded-lg border border-info" data-aos="zoom-in" data-aos-delay="400">
             <div className="flex items-center mb-4">
               <div className="icon bg-purple-500  rounded-full p-3 mr-3">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-8 h-8 stroke-current">

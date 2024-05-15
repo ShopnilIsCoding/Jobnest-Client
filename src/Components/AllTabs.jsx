@@ -6,7 +6,7 @@ import JobCard from './JobCard';
 
 const AllTabs = () => {
     const { isPending, data: jobs } = useQuery({
-        queryKey: ["all", "jobs"],
+        queryKey: ["all", "jobs","home"],
         queryFn: async () => {
           const res = await fetch("https://jobnestbd.vercel.app/all");
           return res.json();
@@ -19,7 +19,7 @@ const AllTabs = () => {
 
    
     const filterJobsByCategory = (category) => {
-        return jobs.filter(job => job.jobCategory === category);
+        return jobs.filter(job => job?.jobCategory === category);
     };
 
     return (
@@ -41,7 +41,7 @@ const AllTabs = () => {
                 <TabPanel >
                     
                     <div className=' flex flex-wrap justify-center'>
-                    {jobs.map(job => (
+                    {jobs?.map(job => (
                          <JobCard key={job._id} job={job}></JobCard>
                     ))}
                     </div>

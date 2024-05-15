@@ -81,12 +81,12 @@ const JobDetails = () => {
       }
   });
 
-  console.log(applicationData)
+  
   useEffect(() => {
     setIsLoadingData(false);
     const isOwner = user.email === job?.email;
     const hasApplied = applicationData?.applied;
-    console.log(isOwner, !hasApplied)
+   
     if (isOwner || hasApplied) {
         setCanApply(false);
     } else {
