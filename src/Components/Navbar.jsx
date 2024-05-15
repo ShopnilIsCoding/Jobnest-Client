@@ -32,7 +32,7 @@ const Navbar = () => {
     queryKey: ["applied", "jobs"],
     queryFn: async () => {
       const res = await axios.get(`http://localhost:3000/applyByAll?email=${user?.email}`,{
-        
+        withCredentials:true
     });
       return res.data;
     },
@@ -148,7 +148,7 @@ const Navbar = () => {
       {user && <span className='border-r border-gray-700'>
       <NavLink to={'/appliedjobs'} className={({isActive})=>isActive? "nav-item active": "nav-item"}>
         <span className="icon">
-        <span className="subicon">{jobs?.length<=0? '?':jobs.length}</span>
+        <span className="subicon">{jobs?.length<=0? '?':jobs?.length}</span>
         <FaBell />
         </span>
         <a >Applied Jobs</a>

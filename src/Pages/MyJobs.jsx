@@ -12,6 +12,7 @@ const MyJobs = () => {
         queryKey: ["my", "jobs"],
         queryFn: async () => {
           const res = await axios.get(`http://localhost:3000/posted?email=${user.email}`,{
+            withCredentials:true
             
         });
           return res.data;
