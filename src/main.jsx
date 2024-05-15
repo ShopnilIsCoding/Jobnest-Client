@@ -9,6 +9,9 @@ import AuthProvider from "./Providers/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import Home from "./Pages/Home";
 import 'react-toastify/dist/ReactToastify.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+AOS.init();
 import {
   
   QueryClientProvider,

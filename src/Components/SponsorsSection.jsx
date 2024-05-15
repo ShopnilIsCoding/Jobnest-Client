@@ -5,8 +5,8 @@ const SponsorsSection = () => {
     <div className="">
         <hr className=" mx-auto border-dashed mt-3 lg:mt-6 border-accent border-2" />
         <div className="mt-6 lg:mt-12 mb-3 lg:mb-6  text-center mx-auto space-y-2">
-            <h1 className="font-meri text-2xl font-bold">Our Partnered Opportunities</h1>
-            <p className=" font-serif max-w-lg mx-auto">Discover career opportunities from leading Bangladeshi companies and global organizations partnering with us. Explore diverse roles in telecommunications, healthcare, finance, technology, and more. </p>
+            <h1 className="text-3xl font-meri font-extrabold text-info sm:text-4xl" data-aos="zoom-in-down">Our Partnered Opportunities</h1>
+            <p className=" font-serif max-w-lg mx-auto" data-aos="zoom-in-down">Discover career opportunities from leading Bangladeshi companies and global organizations partnering with us. Explore diverse roles in telecommunications, healthcare, finance, technology, and more. </p>
 
         </div>
         <Marquee pauseOnHover >

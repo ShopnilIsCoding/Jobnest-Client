@@ -23,7 +23,7 @@ const JobCard = ({ job }) => {
         }
 
     return (
-        <div  className="card">
+        <div  className="card" data-aos="fade-up" data-aos-easing="ease-in-out">
             <h2 className="card-title bg-accent font-elec">{job.jobTitle}</h2>
             <div className="">
                 <img src={job.jobPicture} className="h-[200px] w-[250px]" alt="" />

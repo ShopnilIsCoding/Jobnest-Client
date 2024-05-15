@@ -1,5 +1,6 @@
 
 import { BiSkipNext, BiSkipPrevious } from 'react-icons/bi';
+import JobStats from './JobStats';
 
 const Banner = () => {
     const handleNext = () => {
@@ -51,6 +52,7 @@ const Banner = () => {
             <button className="prev btn-outline border-2 border-accent btn-accent" onClick={handlePrev}><BiSkipPrevious></BiSkipPrevious></button>
             <button className="next btn-outline border-2 border-accent btn-accent" onClick={handleNext}><BiSkipNext></BiSkipNext></button>
           </div>
+          <JobStats></JobStats>
         </div>
         </div>
       );

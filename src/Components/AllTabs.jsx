@@ -24,6 +24,12 @@ const AllTabs = () => {
 
     return (
         <div className='mt-3 lg:mt-6'>
+            <hr className=" mx-auto border-dashed mt-3 lg:mt-6 border-accent border-2" />
+        <div className="mt-6 lg:mt-12 mb-3 lg:mb-6  text-center mx-auto space-y-2 ">
+            <h1 className="text-3xl font-extrabold text-info sm:text-4xl font-meri" data-aos="zoom-in-down">Explore Your Career: Tailored Job Opportunities</h1>
+            <p className=" font-serif max-w-lg mx-auto" data-aos="zoom-in-down">Unlock a world of possibilities with our curated job categories. From technology to healthcare, finance to creative fields, discover diverse opportunities tailored to your preferences. Whether you seek hybrid, onsite, remote, or part-time roles, navigate seamlessly through our tab system to find your ideal career path. </p>
+
+        </div>
             <Tabs>
                 <TabList>
                     <Tab selectedClassName='bg-accent'>All Jobs</Tab>
