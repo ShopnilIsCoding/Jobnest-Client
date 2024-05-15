@@ -19,7 +19,7 @@ JOBNEST is a user-friendly job-seeking website where users can post listings, se
 Key rules and requirements:
 - **Visually Appealing Design**: Focused on color contrast, proper alignment, and customizing component styling for a unique look.
 - **Responsive Design**: Made the website accessible on all devices - mobile, tablet, and desktop.
-- **Persistent Navbar and Footer**: Keeped the navbar and footer visible on all pages except the 404 page, providing meaningful navigation and contact information.
+- **Persistent Navbar and Footer**: Keeping the navbar and footer visible on all pages except the 404 page, providing meaningful navigation and contact information.
 - **Login & Registration Systems**: Implemented error handling and user-friendly forms for seamless user authentication.
 - **JWT Implementation**: Secured certain routes with JSON Web Token (JWT) authentication to ensure user access control.
 - **Job Listings**: Displayed job listings categorized by type, with detailed information and interactive features such as view details and apply buttons.
@@ -28,7 +28,7 @@ Key rules and requirements:
 - **404 Page**: Custom 404 page with an interesting visual element and a back to home button for a seamless user experience.
 
 ## Additional Information
-Explore additional features such as blogs, applied jobs, and user profiles to enhance the user experience further. 
+Explored additional features such as blogs, applied jobs, and user profiles to enhance the user experience further. 
 
 ## Credits
 Developed by Rahomotul Islam.
