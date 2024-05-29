@@ -28,6 +28,7 @@ import ExpressJSBlog from "./Components/ExpressJSBlog";
 import NestJSBlog from "./Components/NestJSBlog";
 import MyJobs from "./Pages/MyJobs";
 import NotFoundPage from "./Pages/NotFoundPage";
+import JobInsights from "./Pages/JobInsights";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
       {
         path:'/myjobs',
         element:<PrivateRoutes><MyJobs></MyJobs></PrivateRoutes>
+      },
+      {
+        path:'/insights',
+        element:<PrivateRoutes><JobInsights></JobInsights></PrivateRoutes>
       }
     ],
   },
