@@ -1,22 +1,82 @@
-import { useContext } from "react";
+import  { useState, useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import { useState } from "react"; 
-import DatePicker from "react-datepicker"; 
-import "react-datepicker/dist/react-datepicker.css"; 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Components/Loading";
 import axios from "axios";
+import Select from 'react-select';
+
+const skills = [
+  { value: 'JavaScript', label: 'JavaScript', color: '#F0DB4F' },
+  { value: 'React', label: 'React', color: '#61DBFB' },
+  { value: 'Node.js', label: 'Node.js', color: '#68A063' },
+  { value: 'CSS', label: 'CSS', color: '#264de4' },
+  { value: 'HTML', label: 'HTML', color: '#e34c26' },
+  { value: 'Python', label: 'Python', color: '#306998' },
+  { value: 'Django', label: 'Django', color: '#092E20' },
+  { value: 'SQL', label: 'SQL', color: '#00758F' },
+  { value: 'NoSQL', label: 'NoSQL', color: '#4DB33D' },
+  { value: 'GraphQL', label: 'GraphQL', color: '#E10098' },
+  { value: 'AWS', label: 'AWS', color: '#FF9900' },
+  { value: 'Docker', label: 'Docker', color: '#2496ED' },
+  { value: 'Kubernetes', label: 'Kubernetes', color: '#326CE5' },
+  { value: 'Git', label: 'Git', color: '#F1502F' },
+  { value: 'Agile', label: 'Agile', color: '#6c757d' },
+  { value: 'Scrum', label: 'Scrum', color: '#f39c12' },
+  { value: 'UI/UX', label: 'UI/UX', color: '#f56f36' },
+  { value: 'Photoshop', label: 'Photoshop', color: '#31a8ff' },
+  { value: 'Illustrator', label: 'Illustrator', color: '#ff9a00' },
+  { value: 'Content Writing', label: 'Content Writing', color: '#16a085' },
+  { value: 'SEO', label: 'SEO', color: '#c0392b' },
+  { value: 'Data Analysis', label: 'Data Analysis', color: '#3498db' },
+  { value: 'Machine Learning', label: 'Machine Learning', color: '#9b59b6' },
+  { value: 'Deep Learning', label: 'Deep Learning', color: '#8e44ad' },
+  { value: 'Product Management', label: 'Product Management', color: '#34495e' },
+];
 
 const AddJobs = () => {
   const { user, loading } = useContext(AuthContext);
   const [deadline, setDeadline] = useState(new Date()); 
   const navigate = useNavigate();
 
+  const [selectedSkills, setSelectedSkills] = useState([]);
+
+  const handleChange = (selectedOptions) => {
+    setSelectedSkills(selectedOptions);
+  };
+
+  const customStyles = {
+    control: (base) => ({
+      ...base,
+      backgroundColor: 'inherit',
+      borderColor: 'inherit',
+      boxShadow: 'none',
+      '&:hover': {
+        borderColor: 'inherit',
+      },
+    }),
+    multiValue: (styles, { data }) => ({
+      ...styles,
+      backgroundColor: data.color,
+    }),
+    multiValueLabel: (styles) => ({
+      ...styles,
+      color: 'white',
+    }),
+    multiValueRemove: (styles, { data }) => ({
+      ...styles,
+      color: 'white',
+      ':hover': {
+        backgroundColor: data.color,
+        color: 'black',
+      },
+    }),
+  };
+
   if (loading) {
-    return (
-      <Loading></Loading>
-    );
+    return <Loading />;
   }
 
   const handleAddJob = (e) => {
@@ -24,18 +84,28 @@ const AddJobs = () => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     const email = user.email;
-    const userPhoto=user.photoURL;
+    const userPhoto = user.photoURL;
     const deadlineDate = deadline.toISOString().split('T')[0];
-  const jobPostingDate = new Date().toISOString().split('T')[0];
-    axios.post('https://jobnestbd.vercel.app/all',{...data,jobPostingDate,deadlineDate,postedBy:user.displayName,email,userPhoto:userPhoto?userPhoto:'/profile.png'})
-    Swal.fire({
-      title: "Job Added",
-      text: "Your job has been successfully added.",
-      icon: "success",
-      confirmButtonColor: "#3085d6",
-      confirmButtonText: "OK"
+    const jobPostingDate = new Date().toISOString().split('T')[0];
+    const selectedSkillsValues = selectedSkills.map(skill => skill.value);
+    axios.post('https://jobnestbd.vercel.app/all', {
+      ...data,
+      jobPostingDate,
+      deadlineDate,
+      postedBy: user.displayName,
+      email,
+      userPhoto: userPhoto ? userPhoto : '/profile.png',
+      skills: selectedSkillsValues
     }).then(() => {
-      navigate(`/myjobs`);
+      Swal.fire({
+        title: "Job Added",
+        text: "Your job has been successfully added.",
+        icon: "success",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "OK"
+      }).then(() => {
+        navigate(`/myjobs`);
+      });
     });
   };
 
@@ -109,6 +179,22 @@ const AddJobs = () => {
             <option>Hybrid</option>
           </select>
         </div>
+        {/* required skills */}
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text font-elec">Required Skills</span>
+          </label>
+          <Select
+            isMulti
+            name="skills"
+            options={skills}
+            className="basic-multi-select select-bordered w-full"
+            classNamePrefix="select"
+            value={selectedSkills}
+            onChange={handleChange}
+            styles={customStyles}
+          />
+        </div>
         {/* Salary Range */}
         <div className="form-control">
           <label className="label">
@@ -164,7 +250,6 @@ const AddJobs = () => {
           name="jobApplicantsNumber"
           value={0}
         />
-
         {/* Submit Button */}
         <div className="form-control">
           <button
