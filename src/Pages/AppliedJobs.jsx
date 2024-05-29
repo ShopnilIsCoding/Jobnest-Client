@@ -11,10 +11,19 @@ import { AuthContext } from "../Providers/AuthProvider";
 import logo from '/logo.jpg';
 import { FaFileDownload } from "react-icons/fa";
 
-const MyDocument = ({ jobs }) => (
+const MyDocument = ({ jobs, userName, userEmail, userPhoto }) => (
   <Document>
     <Page size="A4">
       <View style={styles.section}>
+        {/* Add user information */}
+        <View style={styles.userInfo}>
+          <Image src={userPhoto} style={styles.userPhoto} />
+          <View style={styles.userInfoText}>
+            <Text style={styles.userName}>Applicant: {userName}</Text>
+            <Text style={styles.userEmail}>Email: {userEmail}</Text>
+          </View>
+        </View>
+
         {/* Add logo image */}
         <Image src={logo} style={styles.logo} />
         <Text style={styles.header}>Applied Jobs</Text>
@@ -61,6 +70,29 @@ const styles = StyleSheet.create({
     padding: 10,
     flexGrow: 1,
   },
+  userInfo: {
+    flexDirection: "row",
+    marginBottom: 10,
+    alignItems: "center",
+  },
+  userPhoto: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    marginRight: 10,
+  },
+  userInfoText: {
+    flex: 1,
+    justifyContent: "space-between",
+  },
+  userName: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  userEmail: {
+    fontSize: 12,
+    color: "gray",
+  },
   header: {
     fontSize: 16,
     marginBottom: 10,
@@ -68,8 +100,8 @@ const styles = StyleSheet.create({
   },
   logo: {
     marginBottom: 10,
-    width: 100, // Adjust width as needed
-    height: 100, // Adjust height as needed
+    width: 100,
+    height: 100,
     alignSelf: "center",
   },
   table: {
@@ -91,6 +123,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
 });
+
+
 
 const AppliedJobs = () => {
   const { user } = useContext(AuthContext);
@@ -164,9 +198,10 @@ const AppliedJobs = () => {
       </div>
       <div className="text-center relative">
       
-      <PDFDownloadLink className="btn btn-info mt-2 " document={<MyDocument jobs={filteredJobs} />} fileName="applied_jobs.pdf" style={{ textDecoration: 'none' }}><FaFileDownload className=" "></FaFileDownload> Download PDF
-        {({  loading }) => (loading ? 'Loading document...' : 'Download PDF')}
-      </PDFDownloadLink>
+      <PDFDownloadLink className="btn btn-info mt-2 " document={<MyDocument jobs={filteredJobs} userName={user.displayName} userEmail={user.email} userPhoto={user.photoURL} />} fileName="applied_jobs.pdf" style={{ textDecoration: 'none' }}><FaFileDownload className=" "></FaFileDownload> Download PDF
+  {({ loading }) => (loading ? 'Loading document...' : 'Download PDF')}
+</PDFDownloadLink>
+
       </div>
     </div>
   );
