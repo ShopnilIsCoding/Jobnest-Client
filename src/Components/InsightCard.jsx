@@ -28,7 +28,7 @@ const InsightCard = ({ job, selected, idx }) => {
   }, [job, selected]);
 
   return (
-    <div className={`border border-violet-400 lg:rounded-l-full lg:rounded-tr-full flex gap-2 items-center animate__animated animate__fadeInDown`}>
+    <div className={` shadow-2xl rounded-xl  lg:rounded-l-full lg:rounded-tr-full flex gap-2 items-center animate__animated animate__fadeInDown bg-base-100 drop-shadow-2xl`}>
       <img src={job.jobPicture} className="size-24 rounded-full" alt="" />
       <div className="flex-1 p-2">
         <div className="flex flex-col lg:flex-row gap-2">
@@ -55,7 +55,7 @@ const InsightCard = ({ job, selected, idx }) => {
             <span className="text-2xl font-serif font-bold">
               <CountUp start={0} end={percentage} duration={2} decimals={0} />
             </span>{"% "}
-            <span className="font-meri text-md">Matched!</span>
+            <span className="font-serif text-md">Matched!</span>
           </p>
           <Link to={`/details/${job._id}`} className="bg-red-800 px-2 rounded-full text-white font-meri">
             Apply <FaLocationArrow className="inline" />
