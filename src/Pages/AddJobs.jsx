@@ -8,7 +8,7 @@ import Loading from "../Components/Loading";
 import axios from "axios";
 import Select from 'react-select';
 
-const skills = [
+export const skills = [
   { value: 'JavaScript', label: 'JavaScript', color: '#F0DB4F' },
   { value: 'React', label: 'React', color: '#61DBFB' },
   { value: 'Node.js', label: 'Node.js', color: '#68A063' },
@@ -34,6 +34,21 @@ const skills = [
   { value: 'Machine Learning', label: 'Machine Learning', color: '#9b59b6' },
   { value: 'Deep Learning', label: 'Deep Learning', color: '#8e44ad' },
   { value: 'Product Management', label: 'Product Management', color: '#34495e' },
+  { value: 'Graphic Designer', label: 'Graphic Designer', color: '#f56f36' },
+  { value: 'Administrative Assistant', label: 'Administrative Assistant', color: '#f39c12' },
+  { value: 'SEO', label: 'SEO', color: '#c0392b' },
+  { value: 'Data Analysis', label: 'Data Analysis', color: '#3498db' },
+  { value: 'Product Management', label: 'Product Management', color: '#34495e' },
+  { value: 'Copywriting', label: 'Copywriting', color: '#2ecc71' },
+  { value: 'Digital Marketing', label: 'Digital Marketing', color: '#9b59b6' },
+  { value: 'Brand Management', label: 'Brand Management', color: '#e74c3c' },
+  { value: 'UX Research', label: 'UX Research', color: '#27ae60' },
+  { value: 'UI Design', label: 'UI Design', color: '#3498db' },
+  { value: 'Frontend Development', label: 'Frontend Development', color: '#2980b9' },
+  { value: 'Backend Development', label: 'Backend Development', color: '#c0392b' },
+  { value: 'Mobile App Development', label: 'Mobile App Development', color: '#f39c12' },
+  { value: 'Quality Assurance', label: 'Quality Assurance', color: '#1abc9c' },
+  { value: 'Project Management', label: 'Project Management', color: '#34495e' },
 ];
 
 const AddJobs = () => {
@@ -87,7 +102,7 @@ const AddJobs = () => {
     const userPhoto = user.photoURL;
     const deadlineDate = deadline.toISOString().split('T')[0];
     const jobPostingDate = new Date().toISOString().split('T')[0];
-    const selectedSkillsValues = selectedSkills.map(skill => skill.value);
+    
     axios.post('https://jobnestbd.vercel.app/all', {
       ...data,
       jobPostingDate,
@@ -95,7 +110,7 @@ const AddJobs = () => {
       postedBy: user.displayName,
       email,
       userPhoto: userPhoto ? userPhoto : '/profile.png',
-      skills: selectedSkillsValues
+      skills: selectedSkills
     }).then(() => {
       Swal.fire({
         title: "Job Added",
@@ -265,3 +280,4 @@ const AddJobs = () => {
 };
 
 export default AddJobs;
+
