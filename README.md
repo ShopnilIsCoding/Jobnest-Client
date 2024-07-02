@@ -13,7 +13,7 @@ Visit the live site [here](https://jobnestbd.web.app/).
 - **Responsive Design**: Accessible on all devices - mobile, tablet, and desktop.
 
 ## Introduction
-JOBNEST is a user-friendly job-seeking website where users can post listings, search for positions, and apply effortlessly. 
+JOBNEST is a user-friendly job-seeking website where users can post listings, search for positions, and apply effortlessly.
 
 ## Main Requirements
 Key rules and requirements:
@@ -28,7 +28,7 @@ Key rules and requirements:
 - **404 Page**: Custom 404 page with an interesting visual element and a back to home button for a seamless user experience.
 
 ## Additional Information
-Explored additional features such as blogs, applied jobs, and user profiles to enhance the user experience further. 
+Explored additional features such as blogs, applied jobs, and user profiles to enhance the user experience further.
 
 ## Credits
 Developed by Rahomotul Islam.
@@ -36,3 +36,38 @@ Developed by Rahomotul Islam.
 ## License
 This project is licensed under the [MIT License](LICENSE).
 
+## Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed on your system:
+- Node.js (v14.x or higher)
+- npm (v6.x or higher) or yarn (v1.x or higher)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/jobnest.git
+   cd jobnest
+2. Install dependencies:
+   ```bash
+   npm install
+3. Set up Firebase:
+   - Create a Firebase project at [Firebase Console](https://console.firebase.google.com/).
+   - Add a web app to your Firebase project.
+   - Copy your Firebase configuration details and create a `.env` file in the root directory with the following content:
+     ```plaintext
+     VITE_FIREBASE_API_KEY=your_api_key
+     VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
+     VITE_FIREBASE_PROJECT_ID=your_project_id
+     VITE_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+     VITE_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+     VITE_FIREBASE_APP_ID=your_app_id
+     ```
+4. Run the development server:
+   ```bash
+   npm run dev
+5. Build for production:
+   ```bash
+   npm run build
